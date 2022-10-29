@@ -1,0 +1,65 @@
+name: Digitalocean GitHub Action Runner
+description: Digitalocean droplet as a GitHub Actions self-hosted runner.
+author: Satyabrata Swain
+branding:
+  icon: 'box'
+  color: 'orange'
+inputs:
+  mode:
+    description: >-
+      Specify here which mode you want to use:
+        - 'start' - to start a new runner;
+        - 'stop' - to stop the previously created runner.
+    required: true
+  github-token:
+    description: >-
+      GitHub Personal Access Token with the 'repo' scope assigned.
+    required: true
+  do-pat:
+    description: >-
+      Digitalocean Personal Access Token. ex:- dop_v1_xxxxxxxxxxxxxxxxxxxxxxxxx.
+    required: true
+  do-region:
+    description: >-
+      Digitalocean Droplet Region ex:- blr1.
+    required: true
+  do-image-id:
+    description: >-
+      Digitalocean Image ID ex :- ubuntu-22-10-x64.
+      This input is required if you use the 'start' mode.
+    required: true
+  do-droplet-type:
+    description: >-
+      Digitalocean Droplet Type. ex :- s-1vcpu-1gb.
+      This input is required if you use the 'start' mode.
+    required: true
+  label:
+    description: >-
+      Name of the unique label assigned to the runner.
+      The label is used to remove the runner from GitHub when the runner is not needed anymore.
+      This input is required if you use the 'stop' mode.
+    required: false
+  do-droplet-id:
+    description: >-
+      Digitalocean droplet Id of the created runner.
+      The id is used to terminate the Digitalocean droplet when the runner is not needed anymore.
+      This input is required if you use the 'stop' mode.
+    required: false
+  runner-home-dir:
+    description: >-
+      Directory that contains actions-runner software and scripts. E.g. /home/runner/actions-runner.
+    required: false
+outputs:
+  label:
+    description: >-
+      Name of the unique label assigned to the runner.
+      The label is used in two cases:
+      - to use as the input of 'runs-on' property for the following jobs;
+      - to remove the runner from GitHub when it is not needed anymore.
+  do-droplet-id:
+    description: >-
+      Droplet Id of the created runner.
+      The id is used to terminate the Droplet when the runner is not needed anymore.
+runs:
+  using: node16
+  main: ./dist/index.js

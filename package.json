@@ -1,0 +1,30 @@
+{
+  "name": "digitalocean-github-runner",
+  "version": "1.0.0",
+  "description": "Digitalocean GitHub Action Runner",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:batpool/digitalocean-github-action-runner.git"
+  },
+  "homepage": "https://github.com/batpool/digitalocean-github-action-runner#readme",
+  "bugs": {
+    "url": "https://github.com/batpool/digitalocean-github-action-runner/issues"
+  },
+  "author": "Satyabrata Swain AKA BATMAN",
+  "license": "MPL-2.0",
+  "scripts": {
+    "test": "node test.js",
+    "index": "node -r ./src/index.js",
+    "package": "ncc -m build ./src/index.js"
+  },
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1",
+    "axios": "^1.1.3",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.34.0",
+    "eslint": "^8.26.0"
+  }
+}
