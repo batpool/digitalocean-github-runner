@@ -22,17 +22,17 @@ inputs:
   do-region:
     description: >-
       Digitalocean Droplet Region ex:- blr1.
-    required: true
+    required: false
   do-image-id:
     description: >-
       Digitalocean Image ID ex :- ubuntu-22-10-x64.
       This input is required if you use the 'start' mode.
-    required: true
+    required: false
   do-droplet-type:
     description: >-
       Digitalocean Droplet Type. ex :- s-1vcpu-1gb.
       This input is required if you use the 'start' mode.
-    required: true
+    required: false
   label:
     description: >-
       Name of the unique label assigned to the runner.
